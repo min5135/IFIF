@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<!-- 사용자 CSS 추가 -->
+
+<th:block layout:fragment="css">
+    <style>
+
+
+    .col-lg-4{
+        background-color: rgba(275, 275, 275, 0.7);
+        padding: 10px;
+        border-radius: 10px;
+        margin: 0 auto;
+        max-width:400px;
+    }
+    .col-md-7{
+        background-color: rgba(275, 275, 275, 0.85);
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+
+
+    </style>
+
+    <script>
+        function showImage(src, result) {
+            document.getElementById("display-image").src = src;
+            document.getElementById("description").innerHTML = result;
+
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var items = document.querySelectorAll(".prd-item");
+            items.forEach(function(item) {
+                item.addEventListener("click", function() {
+                    var img = this.querySelector("img").src;
+                    var desc = this.querySelector(".tit a").innerHTML;
+                    console.log(desc);
+                    var price = this.querySelector(".tit #price").value;
+                    console.log(price);
+                    var result = "<div><div>"+desc+"</div><hr><div>"+price+"원"+"</div></div>"
+
+                    //desc += this.querySelector(".tit #price)
+                    showImage(img, result);
+                });
+            });
+        });
+    </script>
+</th:block>
+<body>
+<div layout:fragment="content">
+    <br>
+    <br>
+    <br>
+    <div class="container marketing">
+
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+            <div class="col-lg-4">
+                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img"
+                     aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                    <image href="img/image2.jpg" width="140" height="140" preserveAspectRatio="xMidYMid slice" clip-path="circle(50%)" />
+                </svg>
+                <br>
+                <h2 class="fw-normal" style="margin-top:20px; color: black">찾아오시는 길</h2>
+                <br>
+                <p style="color:black"> 주소 : 경기도 부천시 원미구 길주로 234, 203동 1층 1065호 (중동, 힐스테이트 중동)</p>
+                <p><a class="btn btn-secondary" href="/members/map">View details »</a></p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img"
+                     aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                    <image href="img/Menu.jpg" width="140" height="140" preserveAspectRatio="xMidYMid slice" clip-path="circle(50%)" />
+                </svg>
+                <br>
+                <h2 class="fw-normal" style="margin-top:20px; color:black ">메뉴</h2>
+                <br>
+                <p style="color:black"> 가지각색 맛볼 수 있는 칵테일이 있어요 !</p>
+                <br>
+                <p><a class="btn btn-secondary" href="/itemRec">View details »</a></p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img"
+                     aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                    <image href="img/IFIF.png" width="140" height="140" preserveAspectRatio="xMidYMid slice" clip-path="circle(50%)" />
+                </svg>
+                <h2 class="fw-normal" style="margin-top:20px;" >Instagram</h2>
+                <br>
+                <p>궁금하신 점이나 상담은 인스타그램 DM 부탁드립니다.</p>
+                <br>
+                <p><a class="btn btn-secondary" href="https://www.instagram.com/ifif.bar?igsh=MTZjam9wMHJkNjZnaA==">View details »</a></p>
+            </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+
+        <br>
+        <h1 style=" color: white; text-align:center">대표 메뉴</h1>
+
+        <!-- START THE FEATURETTES -->
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 style="color:brown" class="featurette-heading fw-normal lh-1">깔루아 밀크 <span class="text-body-secondary"></span></h2>
+                <br>
+                <p style="color:#c44e0e" class="lead">리큐르를 베이스로 한 칵테일. 말 그대로 우유에 커피 리큐르인 깔루아를 섞은 것으로 달콤하고 부드러우며 도수는 맥주와 비슷한 정도입니다.
+                    깔루아의 달콤한 커피향과 우유의 부드러운 맛이 곁들여져서 술에 익숙하지 않은 사람들이 좋아합니다.</p>
+            </div>
+            <div class="col-md-5">
+                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img"
+                     aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect>
+                    <image href="/img/Kahlua Milk.jpg" width="500" height="500" preserveAspectRatio="xMidYMid slice" />
+                </svg>
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading fw-normal lh-1">마티니 <span class="text-body-secondary"></span></h2>
+                <p class="lead">진을 베이스로 하며, 칵테일의 왕으로 불린다고 합니다. <br>진에 드라이 베르무트를 6:1로 휘저어 섞은 술입니다.</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect>
+                    <image href="/img/Martini.jpg" width="500" height="500" preserveAspectRatio="xMidYMid slice" />
+                </svg>
+
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading fw-normal lh-1">올드 패션드 <span class="text-body-secondary"></span></h2>
+                <p class="lead">올드패션드는 '고풍스러운'이라는 의미를 가진 칵테일이라고합니다.
+                    미국 켄터키주 루이스빌레에있는 펜데니스 클럽의 바텐더가 클럽에 모인 경마팬을위해 만들었던 칵테일이라고 하네요
+                    위스키를 베이스로 만들어진 남성적인 칵테일로 마시면 위스키의맛과 비터의 맛을 느낄수있으며 마실수록 설탕이 녹으며 여러가지의
+                    맛을 느낄수있는 칵테일입니다.
+                </p>
+            </div>
+            <div class="col-md-5">
+                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                     width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img"
+                     aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect>
+                    <image href="/img/Old Fashionde.jpg" width="500" height="500" preserveAspectRatio="xMidYMid slice" />
+                    </svg>
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <!-- /END THE FEATURETTES -->
+
+    </div>
+
+</div>
+</body>
+</html>

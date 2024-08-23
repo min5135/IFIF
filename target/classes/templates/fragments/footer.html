@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Footer Example</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            min-height: 100vh;
+        }
+        .footer {
+            background-color: #000;
+            color: #fff;
+            padding: 0;
+            text-align: center;
+            height: 250px;
+
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            margin-top:10px;
+        }
+        .footer .footer-logo {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .footer .footer-contact {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .footer .footer-info {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="footer" th:fragment="footer">
+        <footer class="page-footer font-small cyan darken-3">
+            <div class="footer-logo">
+                My Favorite Food
+            </div>
+
+            <div class="footer-contact">
+                032-521-8889 10:00~17:00 (점심시간: 12:30~13:30) 토,일,공휴일 휴무
+            </div>
+
+            <div class="footer-info">
+                상호명: My Favorite Food | 대표자: 김민 | 시설관리부 : 정반석 | 주소: 인천광역시 부평구 부평동 경원대로 1366 | 대표번호: 032-521-8889 | 팩스번호: 032-521-8889 문의하기 | 개인정보보호관리자: 김연수
+            </div>
+
+            <div class="footer-copyright">
+                Copyright (c) My Favorite Food all rights reserved.
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
