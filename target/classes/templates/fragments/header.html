@@ -45,12 +45,14 @@
             margin-right: 10px;
         }
 
+
         /* 검색 바 중앙 정렬 및 버튼 가로 정렬을 위한 추가 스타일 */
         .search-bar {
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100%;
+            margin-right:5px;
         }
         .btn-group {
             display: flex;
@@ -70,7 +72,7 @@
                     </div>
                     <div class="col-4 d-flex justify-content-center align-items-center">
                         <!-- 검색 폼 -->
-                        <form class="search-bar position-relative" th:action="@{/}" method="get">
+                        <form class="search-bar position-relative" th:action="@{/itemRec}" method="get">
                             <input name="searchQuery" class="form-control me-2" type="search"
                                    placeholder="Search" aria-label="Search">
                             <button type="submit">
@@ -91,13 +93,14 @@
 
             <!-- 메뉴 항목을 nav-scroller로 이동 -->
             <div class="nav-scroller py-1 mb-3 border-bottom">
-                <nav class="nav nav-underline justify-content-between">
-                    <a class="nav-item nav-link link-body-emphasis" sec:authorize="hasAnyAuthority('ROLE_ADMIN')" href="/admin/item/new">상품 등록</a>
-                    <a class="nav-item nav-link link-body-emphasis" sec:authorize="hasAnyAuthority('ROLE_ADMIN')" href="/admin/items">상품 관리</a>
-                    <a class="nav-item nav-link link-body-emphasis"  href="/cart">장바구니</a>
-                    <a class="nav-item nav-link link-body-emphasis"  href="/orders">구매이력</a>
-                    <a class="nav-item nav-link link-body-emphasis"  href="/itemRec">추천 밀키트</a>
-                    <a class="nav-item nav-link link-body-emphasis"  href="/members/delivery">배송조회</a>
+                <nav class="nav nav-underline justify-content-around">
+                    <a class="nav-item nav-link link-body-emphasis1" sec:authorize="hasAnyAuthority('ROLE_ADMIN')" href="/admin/item/new">상품 등록</a>
+                    <a class="nav-item nav-link link-body-emphasis1" sec:authorize="hasAnyAuthority('ROLE_ADMIN')" href="/admin/items">상품 관리</a>
+                    <a class="nav-item nav-link link-body-emphasis1" style="color:#f3f5c4"  href="/cart">장바구니</a>
+                    <a class="nav-item nav-link link-body-emphasis1" style="color:#f3f5c4" href="/orders">구매이력</a>
+                    <a class="nav-item nav-link link-body-emphasis1" style="color:#f3f5c4"  href="/itemRec">메뉴</a>
+                    <a class="nav-item nav-link link-body-emphasis1" style="color:#f3f5c4" href="/whiskey">위스키</a>
+                    <a class="nav-item nav-link link-body-emphasis1" style="color:#f3f5c4" href="/members/delivery">배송조회</a>
                 </nav>
             </div>
         </div>
@@ -105,4 +108,5 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     </div>
-    </html></div>
+</div>
+</html>

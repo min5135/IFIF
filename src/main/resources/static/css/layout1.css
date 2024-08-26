@@ -3,13 +3,15 @@
 /* Padding below the footer and lighter body text */
 
 
+
 body {
   padding-bottom: 3rem;
   /color: rgb(var(--bs-tertiary-color-rgb));
-
-  font-family: "Jua", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+  font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+    letter-spacing: -1px;
 
 }
 .content{

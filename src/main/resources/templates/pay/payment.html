@@ -9,13 +9,12 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <style>
         body {
-             font-family: 'Roboto', sans-serif;
              background-color: #f5f5f5;
              margin: 0;
              padding: 0;
          }
 
-         .container {
+         .container1 {
              max-width: 90%;
              margin: auto;
              background-color: #fff;
@@ -36,20 +35,9 @@
              margin-left:240px;
          }
 
-         button {
-             padding: 12px 24px;
-             font-size: 1.1em;
-             background-color: #4CAF50;
-             color: white;
-             border: none;
-             border-radius: 5px;
-             cursor: pointer;
-             transition: background-color 0.3s ease;
-         }
 
-         button:hover {
-             background-color: #45a049;
-         }
+
+
 
          .button-container {
              text-align: center;
@@ -266,7 +254,9 @@
                     <tbody>
                     <tr>
                         <td class="fs-6 fw-light align-self-center">배송지명</td>
-                        <td class="fs-6 align-self-center">집</td>
+                        <td class="fs-6 align-self-center">
+                            <input type="text" name="delivery-name" placeholder="배송지명 입력" class="form-control">
+                        </td>
                     </tr>
                     <tr>
                         <td class="fs-6 fw-light align-self-center">수취인 이름</td>

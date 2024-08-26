@@ -81,6 +81,12 @@ public class OrderController {
 
     @GetMapping(value = {"/orders", "/orders/{page}"})
     public String orderHist(@PathVariable("page") Optional<Integer> page, Principal principal, Model model){
+       //로그인 여부를 확인하는 로직 추가
+        if(principal == null && httpSession.getAttribute("user") == null){
+            //로그인페이지로 리다이렉트
+            return "redirect:/members/login";
+        }
+
         Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 5);
 
         Page<OrderHistDto> orderHistDtoList;

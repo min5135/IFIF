@@ -28,120 +28,118 @@
 <!-- 사용자 CSS 추가 -->
 <th:block layout:fragment="css">
     <style>
-        /* 전반적인 페이지 레이아웃 조정 */
         body {
-            background-color: #f7f7f7;
-            color: #333;
+            background-color: #1a1a1a; /* 다크 그레이 배경 */
+            color: #e0e0e0; /* 밝은 회색 텍스트 */
+            margin: 0;
+            padding: 0;
         }
 
-        .container {
-            margin-top: 20px;
+        .container1 {
+            background-color: #2b2b2b; /* 어두운 회색 배경 */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* 짙은 그림자 */
+            max-width: 800px; /* 최대 너비 설정 */
+            margin: 0 auto; /* 가운데 정렬 */
         }
 
-        /* 검색 폼 스타일링 */
-        .search-form {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-            margin-top: 20px
-        }
-        .form-control{
-            background-color: #ffcc99;
-            margin-right:5px;
-            border-color:orange;
-        }
-        .search-form select,
-        .search-form input,
-        .search-form button {
-            flex: 1 1 auto;
-            min-width: 150px;
+        form {
+            max-width: 1200px; /* 최대 너비 설정 */
+            margin: 0 auto; /* 가운데 정렬 */
         }
 
-        .search-form select,
-        .search-form input {
+        .row-cols-lg-auto {
+            gap: 15px;
+        }
+
+        select.form-control, input.form-control {
+            background-color: white; /* 중간 어두운 회색 */
+            color: black; /* 밝은 회색 텍스트 */
+            border: 1px solid #666666; /* 살짝 밝은 테두리 */
+            border-radius: 5px;
             padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background-color: #fff;
         }
 
-        .search-form button {
-            padding: 10px 20px;
+        button.form-control.btn-primary {
+            background-color: #ff9933; /* 따뜻한 오렌지색 버튼 */
             border: none;
-            border-radius: 4px;
-            background-color: #007bff;
             color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s;
         }
 
-        .search-form button:hover {
-            background-color: #0056b3;
+        button.form-control.btn-primary:hover {
+            background-color: #ffb366; /* 조금 더 밝은 오렌지색 */
         }
 
-        /* 테이블 스타일링 */
         .table {
-            width: 90%;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            margin-left: 130px;
-            background-color: #fff;
+            width: 100%;
+            background-color: #2b2b2b; /* 어두운 회색 테이블 */
             border-collapse: collapse;
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .table th, .table td {
-            padding: 12px;
-            text-align: left;
-            border: 1px solid #ddd;
+            margin-top: 20px;
+            color: #e0e0e0; /* 밝은 회색 텍스트 */
         }
 
         .table thead {
-            background-color: #f8f9fa;
+            background-color: #4d4d4d; /* 진한 회색 테이블 헤더 */
+            color: #ffffff; /* 흰색 텍스트 */
         }
 
-        .table th {
-            background-color: #007bff;
-            color: #fff;
+        .table th, .table td {
+            padding: 15px;
+            border-bottom: 1px solid #555555; /* 중간 회색 테두리 */
+            text-align: left;
         }
 
-        .table-hover tbody tr:hover {
-            background-color: #f1f1f1;
+        .table a {
+            color: #ff9933; /* 오렌지색 링크 */
+            text-decoration: none;
+        }
+
+        .table a:hover {
+            color: #ffcc66; /* 조금 더 밝은 오렌지 */
         }
 
         .pagination {
-            display: flex;
-            justify-content: center;
             margin-top: 20px;
         }
 
-        .pagination .page-item .page-link {
+        .page-item.disabled .page-link {
+            color: black; /* 비활성화된 페이지 링크 */
+            background-color: rgba(275, 275, 275, 0.7);
+            border: none;
+        }
+
+        .page-item.active .page-link {
+            color: #ffffff;
+            background-color: #ff9933; /* 활성화된 페이지 링크 */
+            border-color: #ff9933;
+        }
+
+        .page-item .page-link {
+            color: #ff9933; /* 페이지 링크 기본 색상 */
+            background-color: #2b2b2b;
+            border: 1px solid #666666; /* 테두리 */
+            border-radius: 5px;
             padding: 10px 15px;
-            border: 1px solid #ddd;
-            color: #007bff;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            margin: 0 5px;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        .pagination .page-item.active .page-link {
-            background-color: #ff6600;
-            color: #fff;
-            border-color: #ff6600;
+        .page-item .page-link:hover {
+            color: #ffcc66; /* 호버 시 링크 색상 */
+            background-color: #333333; /* 호버 시 배경색 */
         }
 
-        .pagination .page-item.disabled .page-link {
-            background-color: #e9ecef;
-            color: #6c757d;
+        .page-link[aria-label="Previous"], .page-link[aria-label="Next"] {
+            color: #ff9933; /* 이전, 다음 링크 색상 */
         }
 
-        .pagination .page-item .page-link:hover {
-            background-color: #ff6600;
-            color: #fff;
-        }
-        .align-items-center{
-            margin-top: 20px;
-            margin-left: 130px;
+        .page-link[aria-label="Previous"]:hover, .page-link[aria-label="Next"]:hover {
+            color: #ffcc66; /* 호버 시 색상 변경 */
         }
 
     </style>

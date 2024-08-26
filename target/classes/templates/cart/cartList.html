@@ -202,6 +202,7 @@
             padding: 20px;
             border-radius: 5px;
             height: fit-content;
+            background-color: rgba(275, 275, 275, 0.7);
         }
         .order-summary h2 {
             font-size: 1.8rem;
@@ -231,7 +232,7 @@
 </th:block>
 
 <div layout:fragment="content" class="content-mg">
-    <h2 class="mb-4 text-center">장바구니 목록</h2>
+    <h2 class="mb-4 text-center" style="color:white;">장바구니 목록</h2>
 
     <div th:if="${not cartItems.isEmpty()}">
     <div class="row">
