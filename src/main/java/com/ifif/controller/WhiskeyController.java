@@ -20,7 +20,7 @@ public class WhiskeyController {
 
     @GetMapping(value = "/whiskey")
     public String itemRec(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model) {
-        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 60);
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 100);
         Page<MainItemDto> items = itemService.getMainItemPage(itemSearchDto, pageable);
         System.out.println(items.getNumber()+"!!!!!!!!!!");
         System.out.println(items.getTotalPages()+"#########");

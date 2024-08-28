@@ -42,6 +42,9 @@ public class ItemImgService {
         System.out.println("(((((");
         itemImgRepository.save(itemImg);
     }
+    public void  saveItemImg(ItemImg itemImg){
+        itemImgRepository.save(itemImg);
+    }
 
     public void updateItemImg(Long itemImgId, MultipartFile itemImgFile) throws Exception{
         if(!itemImgFile.isEmpty()){ // 상품의 이미지를 수정한 경우 상품 이미지 업데이트

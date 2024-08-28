@@ -26,10 +26,18 @@ public class ItemService {
     private final ItemRepository itemRepository;
     private final ItemImgService itemImgService;
     private final ItemImgRepository itemImgRepository;
+    public Long saveItem(Item item){
+        if (item.getItemDetail() == null || item.getItemDetail().isEmpty()) {
+            item.setItemDetail("상세 정보 없음");
+        }
+        //상품등록
+        return itemRepository.save(item).getId();
+    }
     public Long saveItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList)
             throws Exception{
         //상품등록
         Item item = itemFormDto.createItem();
+
         itemRepository.save(item);
         //이미지 등록
         for(int i =0;i<itemImgFileList.size();i++){
