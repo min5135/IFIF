@@ -26,81 +26,91 @@ public class ItemService {
     private final ItemRepository itemRepository;
     private final ItemImgService itemImgService;
     private final ItemImgRepository itemImgRepository;
-    public Long saveItem(Item item){
+
+    public Long saveItem(Item item) {
         if (item.getItemDetail() == null || item.getItemDetail().isEmpty()) {
             item.setItemDetail("상세 정보 없음");
         }
-        //상품등록
+        // 상품등록
         return itemRepository.save(item).getId();
     }
-    public Long saveItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList)
-            throws Exception{
-        //상품등록
-        Item item = itemFormDto.createItem();
 
+    public Long saveItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception {
+        // 상품등록
+        Item item = itemFormDto.createItem();
+        item.setDataSource("USER");
         itemRepository.save(item);
-        //이미지 등록
-        for(int i =0;i<itemImgFileList.size();i++){
+
+        // 이미지 등록
+        for (int i = 0; i < itemImgFileList.size(); i++) {
             ItemImg itemImg = new ItemImg();
             itemImg.setItem(item);
-            if(i==0)
+            if (i == 0)
                 itemImg.setRepImgYn("Y");
             else
                 itemImg.setRepImgYn("N");
-            itemImgService.saveItemImg(itemImg,itemImgFileList.get(i));
+            itemImgService.saveItemImg(itemImg, itemImgFileList.get(i));
         }
         return item.getId();
     }
 
     @Transactional(readOnly = true)
-    public ItemFormDto getItemDtl(Long itemId){
-        //Entity
+    public ItemFormDto getItemDtl(Long itemId) {
+        // Entity
         List<ItemImg> itemImgList = itemImgRepository.findByItemIdOrderByIdAsc(itemId);
-        //DB에서 데이터를 가지고 옵니다.
-        //DTO
-        List<ItemImgDto> itemImgDtoList = new ArrayList<>(); //왜 DTO 만들었나요??
+        // DTO
+        List<ItemImgDto> itemImgDtoList = new ArrayList<>();
 
-        for(ItemImg itemimg : itemImgList){
+        for (ItemImg itemimg : itemImgList) {
             // Entity -> DTO
             ItemImgDto itemImgDto = ItemImgDto.of(itemimg);
             itemImgDtoList.add(itemImgDto);
         }
 
         Item item = itemRepository.findById(itemId).orElseThrow(EntityNotFoundException::new);
-        // Item -> ItemFormDto modelMapper
         ItemFormDto itemFormDto = ItemFormDto.of(item);
         itemFormDto.setItemImgDtoList(itemImgDtoList);
         return itemFormDto;
     }
 
-    public Long updateItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList)
-            throws Exception{
-        //상품 변경
-        Item item = itemRepository.findById(itemFormDto.getId()).
-                orElseThrow(EntityNotFoundException::new);
+    public Long updateItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception {
+        // 상품 변경
+        Item item = itemRepository.findById(itemFormDto.getId())
+                .orElseThrow(EntityNotFoundException::new);
         item.updateItem(itemFormDto);
-        //상품 이미지 변경
+        // 상품 이미지 변경
         List<Long> itemImgIds = itemFormDto.getItemImgIds();
 
-        for(int i =0; i<itemImgFileList.size();i++){
+        for (int i = 0; i < itemImgFileList.size(); i++) {
             itemImgService.updateItemImg(itemImgIds.get(i), itemImgFileList.get(i));
         }
         return item.getId();
     }
+
     @Transactional(readOnly = true) // 쿼리문 실행 읽기만 한다.
-    public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable){
-        return itemRepository.getAdminItemPage(itemSearchDto,pageable);
+    public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
+        return itemRepository.getAdminItemPage(itemSearchDto, pageable);
     }
 
     @Transactional(readOnly = true)
-    public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable){
+    public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
         return itemRepository.getMainItemPage(itemSearchDto, pageable);
     }
 
     @Transactional(readOnly = true)
-    public List<Item> getItemAll(){
+    public List<Item> getItemAll() {
         return itemRepository.findAll();
-
     }
 
+    // 크롤링된 데이터만 가져오기
+    @Transactional(readOnly = true)
+    public List<Item> getCrawledItems() {
+        return itemRepository.findByDataSource("CRAWLED");
+    }
+
+    // 사용자 등록 데이터만 가져오기
+    @Transactional(readOnly = true)
+    public List<Item> getUserItems() {
+        return itemRepository.findByDataSource("USER");
+    }
 }

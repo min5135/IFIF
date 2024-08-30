@@ -22,11 +22,6 @@ public class QItemImg extends EntityPathBase<ItemImg> {
 
     public static final QItemImg itemImg = new QItemImg("itemImg");
 
-    public final QBaseEntity _super = new QBaseEntity(this);
-
-    //inherited
-    public final StringPath createdBy = _super.createdBy;
-
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final StringPath imgName = createString("imgName");
@@ -35,18 +30,9 @@ public class QItemImg extends EntityPathBase<ItemImg> {
 
     public final QItem item;
 
-    //inherited
-    public final StringPath modifiedBy = _super.modifiedBy;
-
     public final StringPath oriImgName = createString("oriImgName");
 
-    //inherited
-    public final DateTimePath<java.time.LocalDateTime> regTime = _super.regTime;
-
     public final StringPath repImgYn = createString("repImgYn");
-
-    //inherited
-    public final DateTimePath<java.time.LocalDateTime> updateTime = _super.updateTime;
 
     public QItemImg(String variable) {
         this(ItemImg.class, forVariable(variable), INITS);

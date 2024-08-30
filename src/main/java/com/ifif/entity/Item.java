@@ -39,6 +39,16 @@ public class Item extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private ItemSellStatus itemSellStatus; // 상품판매 상태
 
+    @Column(name = "data_source", length = 10)
+    private String dataSource;
+
+    public String getDataSource() {
+        return dataSource;
+    }
+
+    public void setDataSource(String dataSource) {
+        this.dataSource = dataSource;
+    }
     //private LocalDateTime regTime; // 등록 시간
 
     //private LocalDateTime updateTime; // 수정 시간

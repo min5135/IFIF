@@ -27,7 +27,7 @@ public class SecurityConfig {
         http.authorizeRequests(auth -> auth
                 .requestMatchers("/css/**", "/js/**","/img/**","/favicon.ico","/error").permitAll()
                 .requestMatchers("/","/members/**","/item/**","/images/**","/comment/**","/map/**").permitAll()
-                .requestMatchers("/","/item/**","/itemRec","/cart","/order","/orders","/whiskey").permitAll()
+                .requestMatchers("/","/item/**","/itemRec","/cart","/order","/orders","/whiskey","/cocktail").permitAll()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
         ).formLogin(formLogin -> formLogin

@@ -4,68 +4,56 @@ import com.ifif.entity.ItemImg;
 import com.ifif.repository.ItemImgRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-import org.thymeleaf.util.StringUtils;
 
 @Service
-@RequiredArgsConstructor
 @Transactional
+@RequiredArgsConstructor
 public class ItemImgService {
-    @Value("${itemImgLocation}") //application.properties에 itemImgLocation
-    private String itemImgLocation;
-
     private final ItemImgRepository itemImgRepository;
-    private final FileService fileService;
-    public void saveItemImg(ItemImg itemImg, MultipartFile itemImgFile) throws Exception{
 
-        String oriImgName = itemImgFile.getOriginalFilename(); // 오리지날 이미지 경로
-        String imgName = "";
-        String imgUrl ="";
-        System.out.println(oriImgName);
-        //파일 업로드
-        if(!StringUtils.isEmpty(oriImgName)){ // oriImgName 문자열로 비어 있지 않으면 실행
-            System.out.println("******");
-            imgName = fileService.uploadFile(itemImgLocation, oriImgName,
-                    itemImgFile.getBytes());
-            System.out.println(imgName);
-            imgUrl = "/images/item/"+imgName; //C:/Shop/item/sdkfjsldkfjlsf.jpg
-        }
-        System.out.println("1111");
-        //상품 이미지 정보 저장
-        // oriImgName : 상품 이미지 파일의 원래 이름
-        // imgName : 실제 로컬에 저장된 상품 이미지 파일의 이름
-        // imgUrl :  로컬에 저장된 상품 이미지 파일을 불러오는 경로
+    // 기존 사용자 등록 이미지 저장 메서드
+    public void saveItemImg(ItemImg itemImg, MultipartFile itemImgFile) throws Exception {
+        String oriImgName = itemImgFile.getOriginalFilename();
+        String imgName = "";  // 실제 저장될 이미지 파일명
+        String imgUrl = "";  // 이미지 조회 경로
+        System.out.println("123123123123");
+        // 이미지 파일 저장 로직 (예: 로컬 파일 시스템, AWS S3 등)
+        // ...
+        // 이미지 정보 업데이트
         itemImg.updateItemImg(oriImgName, imgName, imgUrl);
-        System.out.println("(((((");
-        itemImgRepository.save(itemImg);
-    }
-    public void  saveItemImg(ItemImg itemImg){
         itemImgRepository.save(itemImg);
     }
 
-    public void updateItemImg(Long itemImgId, MultipartFile itemImgFile) throws Exception{
-        if(!itemImgFile.isEmpty()){ // 상품의 이미지를 수정한 경우 상품 이미지 업데이트
-            ItemImg savedItemImg = itemImgRepository.findById(itemImgId).
-                    orElseThrow(EntityNotFoundException::new); // 기존 엔티티 조회
-            // 기존에 등록된 상품 이미지 파일이 있는경우 파일 삭제
-            if(!StringUtils.isEmpty(savedItemImg.getImgName())){
-                fileService.deleteFile(itemImgLocation+"/"+savedItemImg.getImgName());
+    // 이미지 업데이트 메서드
+    public void updateItemImg(Long itemImgId, MultipartFile itemImgFile) throws Exception {
+        if (!itemImgFile.isEmpty()) {
+            ItemImg savedItemImg = itemImgRepository.findById(itemImgId)
+                    .orElseThrow(EntityNotFoundException::new);
+
+            if (savedItemImg.getOriImgName() != null) {
+                // 기존 이미지 삭제 로직 (예: 로컬 파일 시스템, AWS S3에서 삭제)
+                // ...
             }
+
             String oriImgName = itemImgFile.getOriginalFilename();
-            String imgName = fileService.uploadFile(itemImgLocation, oriImgName,
-                    itemImgFile.getBytes()); // 파일 업로드
-            String imgUrl = "/images/item/"+imgName;
-            //변경된 상품 이미지 정보를 세팅
-            //상품 등록을 하는 경우에는 ItemImgRepository.save()로직을 호출 하지만
-            //호출을 하지 않았습니다.
-            //savedItemImg 엔티티는 현재 영속성 상태이다.
-            // 그래서 데이터를 변경하는 것만으로 변경을 감지기능이 동작
-            // 트랜잭션이 끝날때 update 쿼리가 실행 된다.
-            //※ 영속성 상태여야함 사용가능
+            String imgName = "";  // 새로 저장할 이미지 파일명
+            String imgUrl = "";  // 새 이미지의 조회 경로
+
+            // 파일 업로드 코드 추가
+            // ...
+
+            // 새 이미지 정보 업데이트
             savedItemImg.updateItemImg(oriImgName, imgName, imgUrl);
         }
     }
+
+    // 크롤링된 이미지 저장 메서드
+    public void saveCrawledItemImg(ItemImg itemImg, String imgUrl) {
+        itemImg.setCrawledImg(imgUrl);
+        itemImgRepository.save(itemImg);
+    }
+
 }

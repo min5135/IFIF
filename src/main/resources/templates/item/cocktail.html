@@ -4,25 +4,26 @@
       layout:decorate="~{layouts/layout1}">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Whiskey Items</title>
+    <title>Cocktail Items</title>
 </head>
 <body>
 <div layout:fragment="content">
     <br>
-    <h2>Whiskey Bottle</h2>
+    <h2>Cocktail Bottle</h2>
     <div class="container text-center">
         <div class="total-items">
-            전체 <span th:text="${items.size()}" style="color:#ff6600"></span>개의 위스키 상품이 있습니다.
+            전체 <span th:text="${items.size()}" style="color:#ff6600"></span>개의 칵테일 상품이 있습니다.
         </div>
         <div class="row row-cols-4">
-            <div th:each="item : ${items}" class="col"> <!-- List 객체일 경우 -->
+            <div th:each="item : ${items}" class="col">
                 <div class="card">
                     <a th:href="@{/item/{id}(id=${item.id})}" class="text-dark">
-                        <!-- 첫 번째 이미지를 사용하고, 리스트가 비어있지 않은지 체크 -->
+                        <!-- 이미지가 있는 경우만 표시 -->
                         <img th:if="${item.itemImgList.size() > 0}"
                              th:src="${item.itemImgList[0].imgUrl}"
                              class="card-img-top"
-                             th:alt="${item.itemNm}" height="400">
+                             th:alt="${item.itemNm}"
+                             height="400">
                         <div class="card-body">
                             <h4 class="card-title" th:text="${item.itemNm}"></h4>
                             <hr>

@@ -17,17 +17,18 @@ import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
-public class WhiskeyController {
+public class CocktailController {
     private final ItemService itemService;
 
-    @GetMapping(value = "/whiskey")
+    @GetMapping(value = "/cocktail")
     public String itemRec(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model) {
-        // 크롤링한 데이터만 가져오기
-        List<Item> crawledItems = itemService.getCrawledItems();
+        // 사용자 등록한 데이터만 가져오기
+        List<Item> userItems = itemService.getUserItems();
 
-        model.addAttribute("items", crawledItems);
+        model.addAttribute("items", userItems);
         model.addAttribute("itemSearchDto", itemSearchDto);
         model.addAttribute("maxPage", 5);
-        return "item/whiskey";
+        return "item/cocktail";
     }
 }
+

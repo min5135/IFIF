@@ -27,6 +27,8 @@ public class QItem extends EntityPathBase<Item> {
     //inherited
     public final StringPath createdBy = _super.createdBy;
 
+    public final StringPath dataSource = createString("dataSource");
+
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final StringPath itemDetail = createString("itemDetail");

@@ -67,7 +67,6 @@ public class JSoupExample {
                 try {
                     productPrice = Integer.parseInt(productPriceStr);
                 } catch (NumberFormatException e) {
-                    System.out.println("잘못된 가격 데이터: " + productPriceStr);
                     continue;
                 }
 
@@ -81,27 +80,20 @@ public class JSoupExample {
                 item.setPrice(productPrice);
                 item.setStockNumber(100); // 기본 재고 수량 설정
                 item.setItemDetail(productDetail); // 크롤링한 상세 정보 설정
+                item.setDataSource("CRAWLED"); // 데이터 소스 설정 (크롤링 데이터임을 표시)
 
                 // 데이터베이스에 저장
                 itemService.saveItem(item);
 
                 // 이미지 저장 (ItemImg)
-                if (imageUrl != null) {
+                if (!"이미지 없음".equals(imageUrl)) {
                     ItemImg itemImg = new ItemImg();
                     itemImg.setItem(item);
-                    itemImg.setImgUrl(imageUrl);
                     itemImg.setRepImgYn("Y"); // 첫 번째 이미지를 대표 이미지로 설정
 
-                    itemImgService.saveItemImg(itemImg);
+                    // 크롤링된 이미지 URL 저장 메서드 호출
+                    itemImgService.saveCrawledItemImg(itemImg, imageUrl);
                 }
-
-                // 결과 출력 (디버깅용)
-                System.out.println("Product Name: " + productName);
-                System.out.println("Detail URL: " + detailUrl);
-                System.out.println("Product Detail: " + productDetail);
-                System.out.println("Image URL: " + imageUrl);
-                System.out.println("Price: " + productPrice);
-                System.out.println();
             }
         }
     }
