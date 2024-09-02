@@ -74,6 +74,12 @@ public class JSoupExample {
                 String detailUrl = detailBaseUrl + extractWrId(product); // wr_id 값을 추출하여 URL에 추가
                 String productDetail = fetchProductDetail(detailUrl);
 
+                // 중복 체크: 데이터베이스에 이미 존재하는지 확인
+                if (itemService.existsByNameAndPrice(productName, productPrice)) {
+                    // 이미 존재하는 아이템이므로 건너뜁니다.
+                    continue;
+                }
+
                 // Item 객체 생성
                 Item item = new Item();
                 item.setItemNm(productName);

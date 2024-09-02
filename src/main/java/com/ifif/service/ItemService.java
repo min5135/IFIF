@@ -10,6 +10,7 @@ import com.ifif.repository.ItemImgRepository;
 import com.ifif.repository.ItemRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -113,4 +114,11 @@ public class ItemService {
     public List<Item> getUserItems() {
         return itemRepository.findByDataSource("USER");
     }
+
+    public boolean existsByNameAndPrice(String name, int price){
+        // 상품명과 가격으로 중복여부를 확인하는 메서드
+        return itemRepository.existsByItemNmAndPrice(name,price);
+
+    }
+
 }
