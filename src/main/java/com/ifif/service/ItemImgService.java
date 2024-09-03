@@ -30,7 +30,7 @@ public class ItemImgService {
             System.out.println("******");
             imgName = fileService.uploadFile(itemImgLocation, oriImgName, itemImgFile.getBytes());
             System.out.println(imgName);
-            imgUrl = "/images/item/" + imgName;
+            imgUrl = "images/item/" + imgName;
         }
         System.out.println("1111");
         // 이미지 파일 저장 로직 (예: 로컬 파일 시스템, AWS S3 등)
