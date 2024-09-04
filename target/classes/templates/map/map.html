@@ -10,31 +10,34 @@
     <title>찾아오시는 길</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #333;
-            color: white;
-            margin: 0;
-            padding: 0;
-        }
-        .map-container {
-            text-align: center;
-            margin: 50px auto;
-        }
-        #map {
-            width: 700px;
-            height: 500px;
-            border: 2px solid #fff;
-        }
-        h2, p {
-            text-align: center;
-            color: white;
-        }
-        h2 {
-            margin-top: 50px;
-        }
-        input[type="hidden"] {
-            display: none;
-        }
+           background-color: #333;
+           color: white;
+           margin: 0;
+           padding: 0;
+           flex-direction: column;
+           align-items: center;
+       }
+       .map-container {
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           margin: 50px auto;
+           width: 100%; /* 전체 너비를 차지하게 설정 */
+           height: 600px; /* 적절한 높이 설정 */
+       }
+       #map {
+           width: 700px;
+           height: 500px;
+           border: 2px solid #fff;
+       }
+       h2, p {
+           text-align: center;
+           color: white;
+       }
+       h2 {
+           margin-top: 50px;
+       }
+
     </style>
 </head>
 <body>
