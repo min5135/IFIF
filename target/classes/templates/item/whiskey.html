@@ -108,6 +108,8 @@
         <div class="total-items">
             전체 <span th:text="${items.size()}" style="color:#ff6600"></span>개의 위스키 상품이 있습니다.
         </div>
+        <div class="search-results">
+            <p th:if="${searchMessage}" th:text="${searchMessage}"></p> <!-- 검색 결과가 없을 때 메시지 표시 -->
         <div class="row row-cols-4">
             <div th:each="item : ${items}" class="col"> <!-- List 객체일 경우 -->
                 <div class="card">
@@ -127,6 +129,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>

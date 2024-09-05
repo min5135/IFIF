@@ -24,4 +24,5 @@ public interface ItemRepository extends JpaRepository<Item, Long>,
     List<Item> findByItemDetailNative(@Param("itemDetail")String itemDetail);
     List<Item> findByDataSource(String dataSource);
     boolean existsByItemNmAndPrice(String itemNm, int price);
+    List<Item> findByItemNmContainingIgnoreCaseAndDataSource(String itemNm,String dataSource);
 }

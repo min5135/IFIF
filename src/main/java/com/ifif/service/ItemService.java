@@ -120,5 +120,9 @@ public class ItemService {
         return itemRepository.existsByItemNmAndPrice(name,price);
 
     }
+    @Transactional(readOnly = true)
+    public List<Item> searchCrawledItems(String searchQuery){
+        return itemRepository.findByItemNmContainingIgnoreCaseAndDataSource(searchQuery,"CRAWLED");
+    }
 
 }
