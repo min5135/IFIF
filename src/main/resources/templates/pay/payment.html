@@ -133,7 +133,7 @@
     </style>
     <script>
         var IMP = window.IMP;
-        IMP.init("imp00355578");
+        IMP.init("imp12304345");
 
         function requestPay() {
             var orderUid = '[[${requestDto.orderUid}]]';
@@ -141,8 +141,6 @@
             var paymentPrice = [[${requestDto.orderPrice}]];
             var buyerName = '[[${requestDto.buyerName}]]';
             var buyerEmail = '[[${requestDto.buyerEmail}]]';
-            var buyerAddress = '[[${requestDto.buyerAddress}]]';
-            var buyerTel = '[[${requestDto.buyerTel}]]';
 
             IMP.request_pay({
                     pg: 'html5_inicis.INIpayTest',
@@ -152,8 +150,6 @@
                     amount: paymentPrice, // 상품 가격
                     buyer_email: buyerEmail, // 구매자 이메일
                     buyer_name: buyerName, // 구매자 이름
-                    buyer_tel: buyerTel, // 임의의 값
-                    buyer_addr: buyerAddress, // 구매자 주소
                     buyer_postcode: '123-456', // 임의의 값
                 },
                 function (rsp) {
@@ -185,9 +181,9 @@
     <div class="center-content">
         <div class="content-container">
             <div class="m-auto p-5">
-                <h1 class="py-2 fw-bolder" style="text-align: center;" >
+                <h1 class="py-2 fw-bolder" style="text-align: center; color:white;"  >
                     주문상세내역</h1>
-                <p class="fs-5 pt-2 fw-bolder">주문 상품 정보</p>
+                <p class="fs-5 pt-2 fw-bolder" style="">주문 상품 정보</p>
                 <hr>
                 <div class="border border-white table-container">
                     <table class="table border-white">
@@ -270,10 +266,7 @@
                         <td class="fs-6 fw-light align-self-center">주소</td>
                         <td class="fs-6 align-self-center" th:text="${requestDto.buyerAddress}"></td>
                     </tr>
-                    <tr>
-                        <td class="fs-6 fw-light align-self-center">배송지 요청사항</td>
-                        <td class="fs-6 align-self-center">공동현관 1234</td>
-                    </tr>
+
                     </tbody>
                 </table>
 

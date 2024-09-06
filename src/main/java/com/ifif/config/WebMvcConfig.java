@@ -20,5 +20,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
         // /images/item/ 경로로 접근 시 /home/ec2-user/Test/item/에서 파일을 찾음
         registry.addResourceHandler("/images/item/**")
                 .addResourceLocations("file:" + uploadPath + "/item/");
+
+        registry.addResourceHandler("/payment/images/item/**")
+                .addResourceLocations("file:" + uploadPath + "/item/");
     }
 }
