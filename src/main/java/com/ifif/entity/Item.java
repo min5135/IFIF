@@ -1,6 +1,7 @@
 package com.ifif.entity;
 
 import com.ifif.constant.ItemSellStatus;
+import com.ifif.constant.ItemValue;
 import com.ifif.dto.ItemFormDto;
 import com.ifif.exception.OutOfStockException;
 import jakarta.persistence.*;
@@ -39,6 +40,9 @@ public class Item extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private ItemSellStatus itemSellStatus; // 상품판매 상태
 
+    @Enumerated(EnumType.STRING)
+    private ItemValue itemValue; //상품 종류
+
     @Column(name = "data_source", length = 10)
     private String dataSource;
 
@@ -70,6 +74,7 @@ public class Item extends BaseEntity{
         this.stockNumber = itemFormDto.getStockNumber();
         this.itemDetail = itemFormDto.getItemDetail();
         this.itemSellStatus = itemFormDto.getItemSellStatus();
+        this.itemValue =itemFormDto.getItemValue();
 
     }
 

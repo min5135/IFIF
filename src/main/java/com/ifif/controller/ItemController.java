@@ -50,6 +50,7 @@ public class ItemController {
                     "첫번째 상품 이미지는 필수 입력 값입니다.");
             return "item/itemForm";
         }
+        System.out.println(itemFormDto.getItemValue());
         try {
             itemService.saveItem(itemFormDto, itemImgFileList);
         }catch (Exception e){

@@ -39,6 +39,8 @@ public class QItem extends EntityPathBase<Item> {
 
     public final EnumPath<com.ifif.constant.ItemSellStatus> itemSellStatus = createEnum("itemSellStatus", com.ifif.constant.ItemSellStatus.class);
 
+    public final EnumPath<com.ifif.constant.ItemValue> itemValue = createEnum("itemValue", com.ifif.constant.ItemValue.class);
+
     public final ListPath<Member, QMember> member = this.<Member, QMember>createList("member", Member.class, QMember.class, PathInits.DIRECT2);
 
     //inherited

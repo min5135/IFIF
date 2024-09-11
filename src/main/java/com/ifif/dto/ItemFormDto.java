@@ -1,6 +1,7 @@
 package com.ifif.dto;
 
 import com.ifif.constant.ItemSellStatus;
+import com.ifif.constant.ItemValue;
 import com.ifif.entity.Item;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -32,6 +33,8 @@ public class ItemFormDto {
     private Integer stockNumber;
 
     private ItemSellStatus itemSellStatus;
+
+    private ItemValue itemValue;
 
     //----------------------------------------------------------------------------
     //ItemImg

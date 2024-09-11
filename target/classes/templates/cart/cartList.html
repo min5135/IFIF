@@ -57,7 +57,7 @@
             var token = $("meta[name='_csrf']").attr("content");
             var header = $("meta[name='_csrf_header']").attr("content");
 
-            var url = "/cartItem/" + cartItemId + "?count=" + count;
+            var url = "cartItem/" + cartItemId + "?count=" + count;
 
             $.ajax({
                 url: url,
@@ -87,7 +87,7 @@
             var token = $("meta[name='_csrf']").attr("content");
             var header = $("meta[name='_csrf_header']").attr("content");
 
-            var url = "/cartItem/" + cartItemId;
+            var url = "cartItem/" + cartItemId;
 
             $.ajax({
                 url: url,
@@ -294,7 +294,6 @@
     </div>
 </div>
     <div th:if="${cartItems.isEmpty()}" class="text-center mt-5 empty-cart-message">
-        <img src="/img/zz.jpg" alt="장바구니 비어 있음 이미지" class="empty-cart-image">
         <h4>장바구니가 비어 있습니다.</h4>
         <a href="/" class="btn btn-primary mt-3" style="background-color:#ff6600; border-color:#ff6600">쇼핑 계속하기</a>
     </div>
