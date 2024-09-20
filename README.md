@@ -1,5 +1,7 @@
 # [2024] 칵테일 바 IFIF
 - Spring Boot 기반으로 실제 운영하는 칵테일 바 홈페이지를 만든 개인프로젝트
+# AWS 링크
+- (http://ec2-13-124-7-117.ap-northeast-2.compute.amazonaws.com)
 ![IFIF2](https://github.com/user-attachments/assets/597e78c3-624f-4d28-8027-3a91b7473ab1)
 
 # 개요
