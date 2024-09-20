@@ -20,4 +20,6 @@
 - 댓글기능
 
 # 프로젝트 소개
-자세한 프로젝트 소개는 김민 [IFIF]개인프로젝트 PPT (https://github.com/min5135/IFIF/blob/master/%EA%B9%80%EB%AF%BC%20%5BIFIF%5D%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20PPT.pptx)를 참고해주시면 감사하겠습니다.
+자세한 프로젝트 소개는 김민 [IFIF]개인프로젝트 PPT 
+(https://github.com/min5135/IFIF/blob/master/%EA%B9%80%EB%AF%BC%20%5BIFIF%5D%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20PPT.pptx)
+를 참고해주시면 감사하겠습니다.
